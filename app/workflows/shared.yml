@@ -1,0 +1,10 @@
+# Common configuration settings for all workflows
+model: gpt-4o-mini
+temperature: 0.7
+
+# Common tools available to all workflows
+tools:
+  - name: read_file
+    type: file
+  - name: grep
+    type: search

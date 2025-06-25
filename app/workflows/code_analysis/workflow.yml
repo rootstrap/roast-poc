@@ -1,0 +1,9 @@
+name: code_analysis_workflow
+model: gpt-4o-mini
+
+target: 'app/services/sample_code.rb'
+
+steps:
+  - read_file
+  - analyze_code
+  - show_output

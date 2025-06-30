@@ -8,7 +8,9 @@ Roast is a powerful gem that helps structure AI workflows. This POC explores how
 
 ## Prerequisites
 
-TBD
+- Ruby 3.3.8 (managed via rbenv or docker)
+- Rails 7.0 or higher
+- Bundler
 
 ## Setup
 
@@ -18,35 +20,34 @@ git clone https://github.com/rootstrap/roast-poc.git
 cd roast-poc
 ```
 
-2. Install dependencies:
+2. Configure your environment variables:
 ```bash
-TBD
+cp sample.env .env
 ```
+- Edit `.env` with your configuration values.
 
-3. Set up your database:
-```bash
-TBD
-```
 
-4. Configure your environment variables:
+3. Install dependencies:
+- Create your docker-compose.yml
+- Run docker sh
 ```bash
-TBD
+bundle install
 ```
 
 ## Usage
 
 This POC demonstrates how to use Roast as a Ruby gem. Here's a basic example:
 
+- Create your workflow file on app/workflows
+- Create your .yml with specific steps
+- Create your step_name.rb or /step_name/prompt.md file with the corresponding code. Be carefull with directories: .rb step should be at same level as .yml; prompt.md inside a folder with step name.
+- Call the workflow from rails console to test it.
+
 ```ruby
-# TBD
+workflow =  CodeAnalysisWorkflow.new
+workflow.execute
 ```
 
-## Testing
-
-Run the test suite:
-```bash
-TBD
-```
 
 ## Contributing
 

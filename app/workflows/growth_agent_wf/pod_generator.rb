@@ -18,16 +18,19 @@ class PodGenerator < Roast::Workflow::BaseStep
   private
 
   def build_profiles(ai_profiles)
+    bios_details = workflow.output["bios_fetcher"]["bios_details"]
     filtered_profiles = workflow.output["profile_filter_parser"]
+    
     ai_profiles.filter_map do |ai_profile|
-      profile = filtered_profiles.find { |p| p[:name] == ai_profile["name"] }
-      next unless profile
+      bios_profile = bios_details.find { |b| b[:employee][:full_name] == ai_profile["name"] }
+      filtered_profile = filtered_profiles.find { |p| p[:name] == ai_profile["name"] }
+      next unless bios_profile && filtered_profile
       
       {
-        name: ai_profile["name"],
-        role: ai_profile["role"],
-        avatar: avatar_url(ai_profile["name"]),
-        link: profile[:linkBios],
+        name: bios_profile[:employee][:full_name],
+        role: bios_profile[:additional_context][:role][:name],
+        avatar: bios_profile[:additional_context][:avatar_url],
+        link: filtered_profile[:linkBios],
         description: ai_profile["description"]
       }
     end

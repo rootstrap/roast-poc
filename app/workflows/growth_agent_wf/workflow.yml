@@ -7,6 +7,7 @@ steps:
   - profile_filter_prompt
   - profile_filter_parser
   - profile_summary_generator
+  - bios_fetcher
   - pod_generator_prompt
   - pod_generator
   - output_generator

@@ -10,7 +10,7 @@ You are an expert in forming high-performance engineering teams. Your goal is to
 
         ## **Available Profiles**
         Below is a JSON array of profiles available for selection:
-        <%= workflow.output["profile_filter_parser"].to_json %>
+        <%= workflow.output["bios_fetcher"]["bios_details"].to_json %>
 
         Each profile contains:
         - **Name**

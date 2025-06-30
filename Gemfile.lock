@@ -402,6 +402,7 @@ DEPENDENCIES
   propshaft
   puma (>= 5.0)
   rails (~> 8.0.0)
+  raix
   roast-ai
   rubocop-rails-omakase
   ruby_llm

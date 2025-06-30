@@ -109,4 +109,4 @@ class BiosFetcher < Roast::Workflow::BaseStep
     
     mock_biographies[name]
   end
-end 
+end

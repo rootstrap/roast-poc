@@ -39,9 +39,4 @@ class PodGenerator < Roast::Workflow::BaseStep
   def extract_roles(ai_profiles)
     ai_profiles.map { |p| { name: p["role"], seniority: p["seniority"] } }
   end
-
-  def avatar_url(name)
-    initials = name.split(' ').map(&:first).join.upcase
-    "https://via.placeholder.com/150?text=#{initials}"
-  end
 end

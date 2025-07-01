@@ -1,0 +1,13 @@
+name: growth_agent
+model: gpt-4o-mini
+
+steps:
+  - brief_parser
+  - notion_profiles_getter
+  - profile_filter_prompt
+  - profile_filter_parser
+  - profile_summary_generator
+
+profile_filter_prompt:
+  print_response: true
+  json: true

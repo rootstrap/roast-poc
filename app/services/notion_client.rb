@@ -58,4 +58,4 @@ class NotionClient
     return [] unless column && column['multi_select']
     column['multi_select'].map { |opt| opt['name'] }
   end
-end 
+end

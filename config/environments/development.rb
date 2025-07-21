@@ -15,6 +15,13 @@ Rails.application.configure do
   # Enable server timing.
   config.server_timing = true
 
+  # Set NGROK_URL environment variable to ngrok URL
+  if ENV['NGROK_URL'].present?
+    ngrok_host = URI.parse(ENV['NGROK_URL']).host
+    config.hosts << ngrok_host
+    config.hosts << /.*\.ngrok\.io/
+  end
+
   # Enable/disable Action Controller caching. By default Action Controller caching is disabled.
   # Run rails dev:cache to toggle Action Controller caching.
   if Rails.root.join("tmp/caching-dev.txt").exist?

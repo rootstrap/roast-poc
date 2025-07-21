@@ -4,6 +4,7 @@ gem 'roast-ai'
 gem 'ruby_llm'
 gem 'raix'
 gem 'faraday'
+gem 'slack-ruby-client'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 8.0.0"
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]

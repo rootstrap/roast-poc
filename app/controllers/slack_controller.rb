@@ -50,20 +50,92 @@ class SlackController < ApplicationController
   def handle_direct_message(event)
     Rails.logger.info "Direct message from user #{event['user']}"
     
-    # TODO: Phase 2 will integrate with workflow
-    respond_to_direct_message(event)
+    user_id = event['user']
+    message_text = event['text'].strip
+    
+    state = SlackConversationService.get_state(user_id)
+    
+    case state[:step]
+    when :start
+      handle_start_conversation(event)
+    when :brief
+      handle_brief_input(event, state, message_text)
+    when :roles
+      handle_roles_input(event, state, message_text)
+    when :stack
+      handle_stack_input(event, state, message_text)
+    else
+      handle_start_conversation(event) # Reset if confused
+    end
   end
 
-  def respond_to_direct_message(event)
+  def handle_start_conversation(event)
+    user_id = event['user']
+    
+    # Set state to ask for brief
+    state = { step: :brief }
+    SlackConversationService.set_state(user_id, state)
+    
+    # Ask for brief
+    send_message(event['channel'], SlackConversationService.step_prompt(:brief))
+  end
+
+  def handle_brief_input(event, state, message_text)
+    user_id = event['user']
+    
+    # Store brief and move to roles
+    state[:brief] = message_text
+    state[:step] = :roles
+    SlackConversationService.set_state(user_id, state)
+    
+    # Ask for roles
+    send_message(event['channel'], SlackConversationService.step_prompt(:roles))
+  end
+
+  def handle_roles_input(event, state, message_text)
+    user_id = event['user']
+    
+    # Store roles and move to stack
+    state[:roles_text] = message_text
+    state[:step] = :stack
+    SlackConversationService.set_state(user_id, state)
+    
+    # Ask for stack
+    send_message(event['channel'], SlackConversationService.step_prompt(:stack))
+  end
+
+  def handle_stack_input(event, state, message_text)
+    user_id = event['user']
+    
+    # Store stack and trigger workflow
+    state[:stack_text] = message_text
+    
+    # Build workflow input
+    slack_input = SlackInputService.build_workflow_input(
+      state[:brief],
+      state[:roles_text],
+      state[:stack_text],
+      user_id,
+      event['channel']
+    )
+    
+    # Clear conversation state
+    SlackConversationService.clear_state(user_id)
+    
+    # Trigger workflow
+    Rails.logger.info "Triggering workflow for user #{user_id}"
+    SlackWorkflowJob.perform_later(slack_input)
+  end
+
+  def send_message(channel, text)
     return unless defined?(SLACK_CLIENT)
     
     SLACK_CLIENT.chat_postMessage(
-      channel: event['channel'],
-      text: "Hi there! I received your direct message. Slack integration is working! 🚀\n" \
-            "Full workflow integration coming in Phase 2."
+      channel: channel,
+      text: text
     )
   rescue => e
-    Rails.logger.error "Failed to respond to DM: #{e.message}"
+    Rails.logger.error "Failed to send message: #{e.message}"
   end
 
   def bot_user_id

@@ -3,13 +3,20 @@
 class OutputGenerator < Roast::Workflow::BaseStep
   def call
     pod_structure = workflow.output["pod_generator"]
+    brief_data = workflow.output["brief_parser"]
     
     return { output: "❌ No profiles found." } if pod_structure[:profiles].empty?
     
     output_text = format_output(pod_structure)
-    puts output_text
+    puts output_text  # Keep logs
     
-    { output: output_text }
+    # Send to Slack if we have slack context
+    if brief_data && brief_data[:slack_context]
+      send_to_slack(output_text, brief_data[:slack_context])
+      { output: "✅ Slack message sent successfully!" }
+    else
+      { output: output_text }  # Fallback for console usage
+    end
   end
 
   private
@@ -31,5 +38,19 @@ class OutputGenerator < Roast::Workflow::BaseStep
     output << ""
     
     output.join("\n")
+  end
+  
+  def send_to_slack(message, slack_context)
+    return unless defined?(SLACK_CLIENT)
+    
+    begin
+      SLACK_CLIENT.chat_postMessage(
+        channel: slack_context[:channel_id],
+        text: message
+      )
+      Rails.logger.info "Message sent to Slack channel #{slack_context[:channel_id]}"
+    rescue => e
+      Rails.logger.error "Failed to send message to Slack: #{e.message}"
+    end
   end
 end

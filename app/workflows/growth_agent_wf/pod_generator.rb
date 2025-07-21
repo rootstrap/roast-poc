@@ -22,14 +22,14 @@ class PodGenerator < Roast::Workflow::BaseStep
     filtered_profiles = workflow.output["profile_filter_parser"]
     
     ai_profiles.filter_map do |ai_profile|
-      bios_profile = bios_details.find { |b| b[:employee][:full_name] == ai_profile["name"] }
+      bios_profile = bios_details.find { |b| b[:employee][:fullName] == ai_profile["name"] }
       filtered_profile = filtered_profiles.find { |p| p[:name] == ai_profile["name"] }
       next unless bios_profile && filtered_profile
       
       {
-        name: bios_profile[:employee][:full_name],
-        role: bios_profile[:additional_context][:role][:name],
-        avatar: bios_profile[:additional_context][:avatar_url],
+        name: bios_profile[:employee][:fullName],
+        role: bios_profile[:employee][:role][:name],
+        avatar: bios_profile[:additionalContext][:avatar_url],
         link: filtered_profile[:linkBios],
         description: ai_profile["description"]
       }

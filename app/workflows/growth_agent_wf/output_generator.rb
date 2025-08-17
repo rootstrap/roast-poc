@@ -4,18 +4,20 @@ class OutputGenerator < Roast::Workflow::BaseStep
   def call
     pod_structure = workflow.output["pod_generator"]
     brief_data = workflow.output["brief_parser"]
-    
-    return { output: "❌ No profiles found." } if pod_structure[:profiles].empty?
-    
-    output_text = format_output(pod_structure)
-    puts output_text  # Keep logs
-    
-    # Send to Slack if we have slack context
+
+    output_text = ""
+
+    if pod_structure[:profiles].empty?
+      output_text = "❌ No profiles found matching your criteria.\n\nPlease try:\n• Adjusting your role requirements\n• Modifying your tech stack\n• Providing more specific project details"
+    else
+      output_text = format_output(pod_structure)
+    end
+
     if brief_data && brief_data[:slack_context]
       send_to_slack(output_text, brief_data[:slack_context])
       { output: "✅ Slack message sent successfully!" }
     else
-      { output: output_text }  # Fallback for console usage
+      { output: output_text }
     end
   end
 

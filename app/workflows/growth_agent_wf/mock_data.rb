@@ -32,40 +32,10 @@ module MockData
           linkBios: "https://bios.co/alejandro-ruiz"
         },
         {
-          name: "Valeria Castro",
-          role: "Project Manager",
-          tags: ["Project Management", "Ruby on Rails", "Team Leadership", "Technical Strategy", "People Management"],
-          linkBios: "https://bios.co/valeria-castro"
-        },
-        {
-          name: "Elena Castro",
-          role: "Project Manager",
-          tags: ["Project Management", "Ruby on Rails", "React", "Agile", "Process Improvement"],
-          linkBios: "https://bios.co/elena-castro"
-        },
-        {
-          name: "Juliana Torres",
-          role: "Project Manager",
-          tags: ["Project Delivery", "Agile Management", "Client Relations", "Team Coordination", "Process Improvement"],
-          linkBios: "https://bios.co/juliana-torres"
-        },
-        {
-          name: "Verónica Morales",
-          role: "Project Manager",
-          tags: ["Project Delivery", "Scrum", "Stakeholder Management", "Risk Management", "Quality Assurance"],
-          linkBios: "https://bios.co/veronica-morales"
-        },
-        {
           name: "Federico Rojas",
           role: "Project Manager",
-          tags: ["Project Planning", "Agile", "Budget Control", "Timeline Management", "Communication"],
+          tags: ["Project Planning", "Agile", "Budget Control", "Timeline Management", "Communication", "B2B Requirements", "Stakeholder Management"],
           linkBios: "https://bios.co/federico-rojas"
-        },
-        {
-          name: "Mariana Paredes",
-          role: "Project Manager",
-          tags: ["Project Management", "Agile Coaching", "Team Facilitation", "Sprint Planning", "Retrospectives"],
-          linkBios: "https://bios.co/mariana-paredes"
         },
 
         # === BACKEND DEVELOPERS ===
@@ -80,30 +50,6 @@ module MockData
           role: "Backend Developer",
           tags: ["Ruby on Rails", "PostgreSQL", "Docker", "AWS", "API Design", "Healthcare APIs", "HL7 Integration"],
           linkBios: "https://bios.co/camila-rodriguez"
-        },
-        {
-          name: "Lucas Fernández",
-          role: "Backend Developer",
-          tags: ["Ruby on Rails", "PostgreSQL", "Performance", "Hotwire", "AWS", "Digital Signatures", "PKI Integration"],
-          linkBios: "https://bios.co/lucas-fernandez"
-        },
-        {
-          name: "Martín Suárez",
-          role: "Backend Developer",
-          tags: ["Ruby on Rails", "PostgreSQL", "AWS", "Docker", "Testing", "E-learning Platforms", "LMS Integration"],
-          linkBios: "https://bios.co/martin-suarez"
-        },
-        {
-          name: "Catalina Morales",
-          role: "Backend Developer",
-          tags: ["Ruby on Rails", "Hotwire", "PostgreSQL", "AWS", "Performance Optimization", "Healthcare APIs", "HL7 Integration"],
-          linkBios: "https://bios.co/catalina-morales"
-        },
-        {
-          name: "Lucia Paredes",
-          role: "Backend Developer",
-          tags: ["Ruby on Rails", "System Design", "AWS", "PostgreSQL", "Performance", "IoT Integration", "Real-time Data"],
-          linkBios: "https://bios.co/lucia-paredes"
         },
         {
           name: "Roberto Méndez",
@@ -126,28 +72,10 @@ module MockData
           linkBios: "https://bios.co/valentina-gonzalez"
         },
         {
-          name: "Sofía Castro",
-          role: "Full Stack Developer",
-          tags: ["Ruby on Rails", "React", "PostgreSQL", "AWS", "Testing", "E-commerce Platforms", "Payment Gateways"],
-          linkBios: "https://bios.co/sofia-castro"
-        },
-        {
-          name: "Patricia Torres",
-          role: "Full Stack Developer",
-          tags: ["Ruby on Rails", "React", "Node.js", "AWS", "TypeScript", "Microservices", "API Design"],
-          linkBios: "https://bios.co/patricia-torres"
-        },
-        {
           name: "Sofia Mendoza",
           role: "Full Stack Developer",
           tags: ["Ruby on Rails", "System Architecture", "AWS", "PostgreSQL", "Performance Optimization", "Video Streaming", "CDN Integration"],
           linkBios: "https://bios.co/sofia-mendoza"
-        },
-        {
-          name: "Sebastián Mendoza",
-          role: "Full Stack Developer",
-          tags: ["Ruby on Rails", "React", "AWS", "TypeScript", "Performance", "Mobile-First Design", "Progressive Web Apps"],
-          linkBios: "https://bios.co/sebastian-mendoza"
         },
         {
           name: "Daniel Vargas",
@@ -156,23 +84,17 @@ module MockData
           linkBios: "https://bios.co/daniel-vargas"
         },
         {
-          name: "Carlos Ruiz",
+          name: "Patricia Torres",
           role: "Full Stack Developer",
-          tags: ["Ruby on Rails", "React", "PostgreSQL", "AWS", "TypeScript", "IoT Integration", "Real-time Data"],
-          linkBios: "https://bios.co/carlos-ruiz"
-        },
-        {
-          name: "Gabriela Torres",
-          role: "Full Stack Developer",
-          tags: ["Ruby on Rails", "React", "PostgreSQL", "AWS", "TypeScript", "Blockchain", "Smart Contracts"],
-          linkBios: "https://bios.co/gabriela-torres"
+          tags: ["Ruby on Rails", "React", "Node.js", "AWS", "TypeScript", "Microservices", "API Design"],
+          linkBios: "https://bios.co/patricia-torres"
         },
 
         # === FRONTEND DEVELOPERS ===
         {
           name: "Mateo Silva",
           role: "Frontend Developer",
-          tags: ["React", "TypeScript", "JavaScript", "Figma", "UI/UX", "E-learning Interfaces", "Course Management"],
+          tags: ["React", "React Native", "TypeScript", "JavaScript", "Figma", "UI/UX", "E-learning Interfaces", "Course Management"],
           linkBios: "https://bios.co/mateo-silva"
         },
         {
@@ -182,54 +104,34 @@ module MockData
           linkBios: "https://bios.co/isabella-morales"
         },
         {
-          name: "Lucía Mendoza",
-          role: "Frontend Developer",
-          tags: ["React", "JavaScript", "Figma", "Performance", "Responsive Design", "Digital Signature UI", "Document Management"],
-          linkBios: "https://bios.co/lucia-mendoza"
-        },
-        {
           name: "Florencia Ortiz",
           role: "Frontend Developer",
           tags: ["React", "TypeScript", "JavaScript", "Figma", "State Management", "Billing Interfaces", "Invoice Management"],
           linkBios: "https://bios.co/florencia-ortiz"
         },
         {
-          name: "Marcelo Fernandez",
-          role: "Frontend Developer",
-          tags: ["React", "TypeScript", "JavaScript", "Figma", "UI/UX", "Accessibility", "Performance Optimization"],
-          linkBios: "https://bios.co/marcelo-fernandez"
-        },
-        {
           name: "Ana Paula Costa",
           role: "Frontend Developer",
-          tags: ["React", "TypeScript", "JavaScript", "Figma", "UI/UX", "Mobile-First Design", "Progressive Web Apps"],
+          tags: ["React", "React Native", "TypeScript", "JavaScript", "Figma", "UI/UX", "Mobile-First Design", "Progressive Web Apps"],
           linkBios: "https://bios.co/ana-paula-costa"
         },
         {
           name: "Fernando Silva",
           role: "Frontend Developer",
-          tags: ["React", "TypeScript", "JavaScript", "Figma", "UI/UX", "Animation", "Interactive Design"],
+          tags: ["React", "React Native", "TypeScript", "JavaScript", "Figma", "UI/UX", "Animation", "Interactive Design"],
           linkBios: "https://bios.co/fernando-silva"
         },
-
-        # === DEVOPS ===
         {
-          name: "Nicolás Herrera",
-          role: "DevOps",
-          tags: ["Docker", "AWS", "Kubernetes", "Terraform", "Infrastructure"],
-          linkBios: "https://bios.co/nicolas-herrera"
+          name: "Lucía Mendoza",
+          role: "Frontend Developer",
+          tags: ["React", "JavaScript", "Figma", "Performance", "Responsive Design", "Digital Signature UI", "Document Management"],
+          linkBios: "https://bios.co/lucia-mendoza"
         },
         {
-          name: "Gabriel Torres",
-          role: "DevOps",
-          tags: ["Docker", "AWS", "Monitoring", "Automation", "Scalability"],
-          linkBios: "https://bios.co/gabriel-torres"
-        },
-        {
-          name: "Agustín Moreno",
-          role: "DevOps",
-          tags: ["Docker", "AWS", "PostgreSQL", "Kubernetes", "Performance"],
-          linkBios: "https://bios.co/agustin-moreno"
+          name: "Marcelo Fernandez",
+          role: "Frontend Developer",
+          tags: ["React", "TypeScript", "JavaScript", "Figma", "UI/UX", "Accessibility", "Performance Optimization"],
+          linkBios: "https://bios.co/marcelo-fernandez"
         },
 
         # === QA & TESTING ===
@@ -244,44 +146,6 @@ module MockData
           role: "QA",
           tags: ["QA Leadership", "Test Strategy", "Quality Processes", "Team Management", "Automation", "Financial Testing", "Payment Gateway Testing"],
           linkBios: "https://bios.co/mateo-rojas"
-        },
-        {
-          name: "Daniela Vargas",
-          role: "QA",
-          tags: ["Cypress", "Xray", "Test Automation", "API Testing", "Quality Assurance", "E-learning Testing", "LMS Validation"],
-          linkBios: "https://bios.co/daniela-vargas"
-        },
-        {
-          name: "Andrés Herrera",
-          role: "QA",
-          tags: ["Quality Assurance", "Test Automation", "Manual Testing", "Agile Testing", "Quality Processes"],
-          linkBios: "https://bios.co/andres-herrera"
-        },
-        {
-          name: "Carlos Herrera",
-          role: "QA",
-          tags: ["Quality Assurance", "Test Automation", "Manual Testing", "Agile Testing", "Quality Processes"],
-          linkBios: "https://bios.co/carlos-herrera"
-        },
-
-        # === DESIGNERS ===
-        {
-          name: "Renata Silva",
-          role: "Designer",
-          tags: ["UI/UX Design", "Figma", "Design Systems", "User Research", "Prototyping"],
-          linkBios: "https://bios.co/renata-silva"
-        },
-        {
-          name: "Carmen Silva",
-          role: "Designer",
-          tags: ["UI/UX Design", "Figma", "Prototyping", "Accessibility", "Visual Design"],
-          linkBios: "https://bios.co/carmen-silva"
-        },
-        {
-          name: "Ana Belén Acosta",
-          role: "Designer",
-          tags: ["Figma", "User Research", "Prototyping", "Design Systems", "UI/UX Design"],
-          linkBios: "https://bios.co/ana-belen-acosta"
         }
       ]
     end
@@ -416,7 +280,7 @@ module MockData
           "Led cross-functional team through major platform migration",
           "Established agile practices for distributed team across 4 time zones"
         ]
-      when /Project Manager|Delivery Manager/
+      when /Project Manager/
         [
           "Managed $2M software development project delivered on time and budget",
           "Led cross-functional team of 15 developers across 3 time zones",

@@ -8,7 +8,10 @@ class ProfileFilterParser < Roast::Workflow::BaseStep
 
     matching_names = response.map { |match| match["name"] }
 
-    filtered_names = workflow.output["notion_profiles_getter"]["response"][:notionProfiles].filter do |profile|
+    profiles_data = workflow.output["mock_notion_profiles_getter"]&.dig("response", :notionProfiles) || 
+                   workflow.output["notion_profiles_getter"]&.dig("response", :notionProfiles)
+    
+    filtered_names = profiles_data.filter do |profile|
       matching_names.include?(profile[:name])
     end
 

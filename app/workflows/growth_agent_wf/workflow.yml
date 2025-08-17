@@ -3,10 +3,18 @@ model: gpt-4o-mini
 
 steps:
   - brief_parser
-  - notion_profiles_getter
+  - if: "{{ENV['DEMO_MODE'] == 'true'}}"
+    then:
+      - mock_notion_profiles_getter
+    else:
+      - notion_profiles_getter
   - profile_filter_prompt
   - profile_filter_parser
-  - bios_fetcher
+  - if: "{{ENV['DEMO_MODE'] == 'true'}}"
+    then:
+      - mock_bios_fetcher
+    else:
+      - bios_fetcher
   - pod_generator_prompt
   - pod_generator
   - output_generator

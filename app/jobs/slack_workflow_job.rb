@@ -6,9 +6,6 @@ class SlackWorkflowJob < ApplicationJob
   def perform(slack_input)
     Rails.logger.info "Starting workflow for user #{slack_input[:user_id]}"
 
-    # Send processing message
-    send_processing_message(slack_input)
-
     # Execute workflow with Slack input
     # The output_generator will handle sending results to Slack
     workflow = GrowthAgentWorkflow.new
@@ -23,15 +20,6 @@ class SlackWorkflowJob < ApplicationJob
   end
 
   private
-
-  def send_processing_message(slack_input)
-    return unless defined?(SLACK_CLIENT)
-
-    SLACK_CLIENT.chat_postMessage(
-      channel: slack_input[:channel_id],
-      text: "🚀 Processing your request... This may take a moment."
-    )
-  end
 
   def send_error_message(slack_input, error_message)
     return unless defined?(SLACK_CLIENT)

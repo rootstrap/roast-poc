@@ -24,15 +24,26 @@ class SlackConversationService
 
   def self.step_prompt(step)
     case step
-    when :brief
-      "What's your project brief? (e.g., 'Mobile health app for tracking symptoms')"
+    when :start
+      "Hi! I'm your Growth Agent 🤖 I help create optimal engineering teams based on your project requirements.\n\n" +
+      "Let's start by describing your project. I'll guide you through the process step by step."
     when :roles
-      "What roles do you need? (e.g., 'Backend Developer, Frontend Developer')"
+      "What roles do you need?\n" +
+      "\n*Example:* 'Backend Developer, Full Stack Developer, Product Manager'"
     when :stack
-      "What tech stack? (e.g., 'Ruby on Rails, React, PostgreSQL')"
+      "What tech stack do you need?\n" +
+      "\n*Example:* 'Ruby on Rails, React, PostgreSQL, AWS'"
     else
-      "Hi! I help create team pods. Let's start by describing your project."
+      "I'm sorry, I didn't understand your request. Please try again."
     end
+  end
+
+  def self.processing_message(brief, roles, stack)
+    "Thanks for your input! I'm now processing your request, which may take a few moments. Here's a quick summary of what I'll be working on:\n\n" +
+    "*Product Brief:* #{brief}\n" +
+    "*Tech Stack:* #{stack.length > 0 ? stack.join(', ') : 'Not specified'}\n" +
+    "*Roles Needed:* #{roles.length > 0 ? roles.join(', ') : 'Not specified'}\n\n" +
+    "I'll get back to you as soon as I have the results. Stay tuned! 🚀"
   end
 
   private

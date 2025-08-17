@@ -18,7 +18,7 @@ class PodGenerator < Roast::Workflow::BaseStep
   private
 
   def build_profiles(ai_profiles)
-    bios_details = workflow.output["bios_fetcher"]["bios_details"]
+    bios_details = workflow.output["mock_bios_fetcher"]&.dig("bios_details") || workflow.output["bios_fetcher"]&.dig("bios_details")
     filtered_profiles = workflow.output["profile_filter_parser"]
     
     ai_profiles.filter_map do |ai_profile|

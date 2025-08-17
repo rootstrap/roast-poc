@@ -51,7 +51,13 @@ class SlackController < ApplicationController
     Rails.logger.info "Direct message from user #{event['user']}"
     
     user_id = event['user']
-    message_text = event['text'].strip
+    message_text = event['text'].strip.downcase
+    
+    # Check for initial commands
+    if is_initial_command?(message_text)
+      handle_start_conversation(event)
+      return
+    end
     
     state = SlackConversationService.get_state(user_id)
     
@@ -69,6 +75,11 @@ class SlackController < ApplicationController
     end
   end
 
+  def is_initial_command?(message_text)
+    initial_commands = ['hola', 'hello', 'hi', 'start', 'comenzar', 'iniciar', 'begin', 'bot', 'ayuda', 'help', 'restart']
+    initial_commands.any? { |cmd| message_text.include?(cmd) }
+  end
+
   def handle_start_conversation(event)
     user_id = event['user']
     
@@ -76,8 +87,9 @@ class SlackController < ApplicationController
     state = { step: :brief }
     SlackConversationService.set_state(user_id, state)
     
-    # Ask for brief
-    send_message(event['channel'], SlackConversationService.step_prompt(:brief))
+    # Send welcome message first and ask for brief
+    send_message(event['channel'], SlackConversationService.step_prompt(:start))
+
   end
 
   def handle_brief_input(event, state, message_text)
@@ -118,6 +130,14 @@ class SlackController < ApplicationController
       user_id,
       event['channel']
     )
+    
+    # Send processing message similar to growth-agent
+    processing_msg = SlackConversationService.processing_message(
+      state[:brief],
+      state[:roles_text].split(',').map(&:strip),
+      state[:stack_text].split(',').map(&:strip)
+    )
+    send_message(event['channel'], processing_msg)
     
     # Clear conversation state
     SlackConversationService.clear_state(user_id)

@@ -10,7 +10,7 @@ You are an expert in forming high-performance engineering teams. Your goal is to
 
         ## **Available Profiles**
         Below is a JSON array of profiles available for selection:
-        <%= workflow.output["bios_fetcher"]["bios_details"].to_json %>
+        <%= (workflow.output["mock_bios_fetcher"]&.dig("bios_details") || workflow.output["bios_fetcher"]&.dig("bios_details")).to_json %>
 
         Each profile contains:
         - **Name**

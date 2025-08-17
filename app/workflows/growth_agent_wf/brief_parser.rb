@@ -3,11 +3,9 @@
 
 class BriefParser < Roast::Workflow::BaseStep
   def call
-    mock_input = false
-
     slack_input = workflow.pre_processing_data&.slack_input
-    
-    return mocked_data if mock_input || !slack_input
+
+    return {} unless slack_input
 
     {
       roles: slack_input[:roles],
@@ -29,12 +27,4 @@ class BriefParser < Roast::Workflow::BaseStep
     "stack required: #{slack_input[:stack].join(', ')}"
   end
 
-  def mocked_data
-    {
-      roles: ["Backend Developer"],
-      stack: ["Ruby on Rails", "PostgreSQL"],
-      brief: "Desarrollar una app móvil de salud mental",
-      briefParsed: "Project brief: Desarrollar una app móvil de salud mental\nroles required: Backend Developer\nstack required: Ruby on Rails"
-    }
-  end
 end
